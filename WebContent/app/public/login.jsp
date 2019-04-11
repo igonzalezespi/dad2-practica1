@@ -23,7 +23,7 @@
 				<label class="mdl-textfield__label" for="user">Usuario</label>
 			</div>
 			<div class="mdl-textfield mdl-js-textfield">
-				<input class="mdl-textfield__input" type="text" id="password" name="password">
+				<input class="mdl-textfield__input" type="password" id="password" name="password">
 				<label class="mdl-textfield__label" for="user">Contraseña</label>
 			</div>
 		  </div>

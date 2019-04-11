@@ -7,34 +7,46 @@
 <%@include file="../../libs.jsp" %>
 
 <title>Fincas UCAM</title>
+<style>
+	table, .table-actions {
+	    width: 500px;
+	    margin: 0 auto;
+	    margin-bottom: 20px;
+    }
+</style>
 </head>
 <body>
 <%@include file="../parts/header.jsp" %>
 
+<div class="table-actions"
+	 style="display: flex; flex-direction: row;">
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+			style="flex: 0 0 90px;">
+		Añadir
+	</button>
+	<div class="table-title"
+		 style="flex: 1; text-align: center; line-height: 36px; font-size: 30px;">
+		Usuarios
+	</div>
+	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+			style="flex: 0 0 90px;">
+		Borrar
+	</button>
+</div>
 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
   <thead>
     <tr>
-      <th class="mdl-data-table__cell--non-numeric">Material</th>
-      <th>Quantity</th>
-      <th>Unit price</th>
+      <th class="mdl-data-table__cell--non-numeric"
+      	  style="width: 100%;">
+      	  Nombre
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-      <td>25</td>
-      <td>$2.90</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-      <td>50</td>
-      <td>$1.25</td>
-    </tr>
-    <tr>
-      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-      <td>10</td>
-      <td>$2.35</td>
-    </tr>
+    <tr><td class="mdl-data-table__cell--non-numeric">Judith</td></tr>
+    <tr><td class="mdl-data-table__cell--non-numeric">Nolan</td></tr>
+    <tr><td class="mdl-data-table__cell--non-numeric">Madeline</td></tr>
+    <tr><td class="mdl-data-table__cell--non-numeric">Iván</td></tr>
   </tbody>
 </table>
 
