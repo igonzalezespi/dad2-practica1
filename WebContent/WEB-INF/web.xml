@@ -10,7 +10,7 @@
 
 	<filter-mapping>
 		<filter-name>noCacheFilter</filter-name>
-		<url-pattern>*</url-pattern>
+		<url-pattern>/app/public/login.jsp</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>loginCheckFilter</filter-name>
@@ -24,6 +24,11 @@
 		<filter-name>privateFilter</filter-name>
 		<url-pattern>/app/private/*</url-pattern>
 		<url-pattern>/api/private/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>adminFilter</filter-name>
+		<url-pattern>/app/private/user/*</url-pattern>
+		<url-pattern>/api/private/user</url-pattern>
 	</filter-mapping>
 
 	<error-page>

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import edu.ucam.internal.auth.AuthService;
+
 /**
  * Servlet Filter implementation class FiltroSecured
  */
@@ -41,9 +43,7 @@ public class PrivateFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
 
-		boolean loggedIn = (session != null && session.getAttribute("LOGIN") != null);
-
-		if (loggedIn) {
+		if (AuthService.isLoggedIn(session)) {
 			chain.doFilter(req, res);
 		} else {
 			response.sendRedirect(request.getContextPath() + "/app/public/login.jsp");

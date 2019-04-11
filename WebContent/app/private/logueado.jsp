@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<%@include file="../libs.jsp" %>
+
 <title>¿Cerrar sesión?</title>
 </head>
 <body>

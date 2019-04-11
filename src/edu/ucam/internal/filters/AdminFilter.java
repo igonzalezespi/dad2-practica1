@@ -1,6 +1,7 @@
 package edu.ucam.internal.filters;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -10,21 +11,19 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import edu.ucam.internal.auth.AuthService;
 
 /**
- * Servlet Filter implementation class FiltroServlet
+ * Servlet Filter implementation class FiltroSecured
  */
-
-@WebFilter(filterName = "loginCheckFilter")
-public class LoginCheckFilter implements Filter {
+@WebFilter(filterName = "adminFilter")
+public class AdminFilter implements Filter {
 
 	/**
 	 * Default constructor.
 	 */
-	public LoginCheckFilter() {
+	public AdminFilter() {
 	}
 
 	/**
@@ -38,15 +37,15 @@ public class LoginCheckFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("LoginCheckFilter");
+		System.out.println("AdminFilter");
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
-		HttpSession session = request.getSession(false);
 
-		if (AuthService.isLoggedIn(session)) {
-			request.getRequestDispatcher("/app/private/logueado.jsp").forward(request, response);
+		if (AuthService.isAdmin(request)) {
+			chain.doFilter(req, res);
 		} else {
-			chain.doFilter(request, response);
+			// Si no está logueado saltaría el PrivateFilter, así que lo llevamos a la página principal
+			response.sendRedirect(request.getContextPath() + "/app/private/main.jsp");
 		}
 	}
 
