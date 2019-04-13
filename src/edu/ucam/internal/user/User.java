@@ -1,13 +1,43 @@
 package edu.ucam.internal.user;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private Number id;
+	private String login;
 	private String name;
-	private String password;
+	private String surname;
 
-	public User(String name, String password) {
+	public User() {
+		this.setId(null);
+		this.setLogin("");
+		this.setName("");
+		this.setSurname("");
+	}
+
+	public User(Number id, String login, String name, String surname) {
+		this.setId(id);
+		this.setLogin(login);
 		this.setName(name);
-		this.setPassword(password);
+		this.setSurname(surname);
+	}
+
+	public Number getId() {
+		return id;
+	}
+
+	public void setId(Number id) {
+		this.id = id;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getName() {
@@ -18,20 +48,16 @@ public class User {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public boolean check() {
-		return this.name.equals(this.password);
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 	
 	public String toString() {
-		return this.name + " : " + this.password;
+		return this.id + " : " + this.login + " : " + this.name + " : " + this.surname;
 	}
 
 }

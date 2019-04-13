@@ -39,7 +39,7 @@
 	  	if (AuthService.isAdmin(request)) {
 	  		out.println(
 	  			"<a class=\"mdl-list__item\"" +
-	  		  	"    href=\"" + request.getContextPath() + "/app/private/user/user-search.jsp\">" +
+	  		  	"    href=\"" + request.getContextPath() + "/api/private/user/views/user-search\">" +
 	  			"  <span class=\"mdl-list__item-primary-content\">" +
 		        "    Usuarios" +
 		        "  </span>" +

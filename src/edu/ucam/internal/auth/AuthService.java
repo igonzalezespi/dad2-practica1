@@ -3,8 +3,6 @@ package edu.ucam.internal.auth;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import edu.ucam.internal.user.User;
-
 public class AuthService {
 	public static final String IS_LOGGED_IN = "LOGGED_IN";
 	public static final String LOGGED_USER_INFO = "LOGGED_USER_INFO";
@@ -31,11 +29,11 @@ public class AuthService {
 		return false;
 	}
 
-	public static void setSessionInfo(HttpSession session, boolean logIn, User user) {
+	public static void setSessionInfo(HttpSession session, boolean logIn, Auth auth) {
 		if (logIn) {
 			session.setAttribute(IS_LOGGED_IN, true);
-			session.setAttribute(LOGGED_USER_INFO, user);
-			session.setAttribute(IS_ADMIN, user.getName().equals("admin") && user.getPassword().equals("admin"));
+			session.setAttribute(LOGGED_USER_INFO, auth);
+			session.setAttribute(IS_ADMIN, auth.getLogin().equals("admin") && auth.getPassword().equals("admin"));
 		} else {
 			cleanSession(session);
 		}
