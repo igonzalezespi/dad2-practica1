@@ -1,4 +1,4 @@
-package edu.ucam.internal.user.views;
+package edu.ucam.internal.crop.views;
 
 import java.io.IOException;
 
@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ucam.internal.user.UserService;
+import edu.ucam.internal.crop.CropService;
 
 /**
- * Servlet implementation class UserSearch
+ * Servlet implementation class CropSearch
  */
-@WebServlet("/api/private/user/views/user-search")
-public class UserSearch extends HttpServlet {
+@WebServlet("/api/private/crop/views/crop-search")
+public class CropSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	UserService service;
+	CropService service;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserSearch() {
+    public CropSearch() {
         super();
     }
 	
@@ -31,8 +31,8 @@ public class UserSearch extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			request.getSession(false).setAttribute("list", UserService.findAll());
-			request.getRequestDispatcher("/app/private/user/user-search.jsp").forward(request, response);
+			request.getSession(false).setAttribute("list", CropService.findAll());
+			request.getRequestDispatcher("/app/private/crop/crop-search.jsp").forward(request, response);
 		} catch(Error e) {
 			e.printStackTrace();
 			request.getRequestDispatcher("/app/public/error-general.jsp").forward(request, response);

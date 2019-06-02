@@ -8,7 +8,7 @@
 
 <title>Login</title>
 </head>
-<body>
+<body style="height:100%; width:100%">
 	<form action="<%=request.getContextPath()%>/api/public/login"
 		method="POST">
 		<div class="mdl-card mdl-shadow--2dp"

@@ -13,21 +13,16 @@ import edu.ucam.internal.user.UserService;
 
 @WebServlet("/api/private/user/actions/update")
 public class UserUpdate extends HttpServlet {
-	UserService service;
 	private static final long serialVersionUID = 1L;
 
 	public UserUpdate() {
 		super();
 	}
 	
-	public void init() throws ServletException {
-		service = new UserService(this.getServletContext());
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user = new User(Integer.parseInt(request.getParameter("id")), request.getParameter("login"), request.getParameter("name"), request.getParameter("surname"));
-		service.update(user.getId(), user);
+		UserService.update(user.getId(), user);
 		response.sendRedirect(request.getContextPath() + "/api/private/user/views/user-search");
 	}
 }

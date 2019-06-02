@@ -26,17 +26,13 @@ public class UserEdit extends HttpServlet {
         super();
     }
 	
-	public void init() throws ServletException {
-		service = new UserService(this.getServletContext());
-	}
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			if (request.getParameter("id") != null && !request.getParameter("id").equals("")) {
-				request.getSession(false).setAttribute("element", service.findOne(Integer.parseInt(request.getParameter("id"))));
+				request.getSession(false).setAttribute("element", UserService.findOne(Integer.parseInt(request.getParameter("id"))));
 			} else {
 				request.getSession(false).removeAttribute("element");
 			}

@@ -1,4 +1,4 @@
-package edu.ucam.internal.user.views;
+package edu.ucam.internal.farm.views;
 
 import java.io.IOException;
 
@@ -8,21 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ucam.internal.user.UserService;
+import edu.ucam.internal.crop.CropService;
+import edu.ucam.internal.farm.FarmService;
 
 /**
- * Servlet implementation class UserSearch
+ * Servlet implementation class FarmSearch
  */
-@WebServlet("/api/private/user/views/user-search")
-public class UserSearch extends HttpServlet {
+@WebServlet("/api/private/farm/views/farm-edit")
+public class FarmEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	UserService service;
+	FarmService service;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserSearch() {
+    public FarmEdit() {
         super();
     }
 	
@@ -31,8 +32,13 @@ public class UserSearch extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			request.getSession(false).setAttribute("list", UserService.findAll());
-			request.getRequestDispatcher("/app/private/user/user-search.jsp").forward(request, response);
+			request.getSession(false).setAttribute("crops", CropService.findAll());
+			if (request.getParameter("id") != null && !request.getParameter("id").equals("")) {
+				request.getSession(false).setAttribute("element", FarmService.findOne(Integer.parseInt(request.getParameter("id"))));
+			} else {
+				request.getSession(false).removeAttribute("element");
+			}
+			request.getRequestDispatcher("/app/private/farm/farm-edit.jsp").forward(request, response);
 		} catch(Error e) {
 			e.printStackTrace();
 			request.getRequestDispatcher("/app/public/error-general.jsp").forward(request, response);

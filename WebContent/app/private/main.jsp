@@ -15,40 +15,46 @@
     	cursor: pointer;
 	}
 	
-	a.mdl-list__item {
+	a {
 		text-decoration: none;
 	}
 </style>
+<script>
+	var goBack = function() {
+		location.replace(location.origin + <%=request.getContextPath()%> + "/app/public/login.jsp");
+	}
+</script>
 </head>
-<body>
+<body style="height:100%; width:100%">
 <%@include file="./parts/header.jsp" %>
-<div>
-	<ul class="main-menu mdl-list"
-		style="width: 400px; margin: 0 auto;">
-	  <li class="mdl-list__item">
+<div class="main-menu mdl-list"
+	 style="width: 400px; margin: 0 auto;">
+  	<a class="mdl-list__item"
+  	   href="<%=request.getContextPath()%>/api/private/crop/views/crop-search">
 	    <span class="mdl-list__item-primary-content">
 	      Cultivos
 	    </span>
-	  </li>
-	  <li class="mdl-list__item">
+    </a>
+  	<a class="mdl-list__item"
+  	   href="<%=request.getContextPath()%>/api/private/farm/views/farm-search">
 	    <span class="mdl-list__item-primary-content">
 	      Fincas
 	    </span>
-	  </li>
-	  <%
-	  	if (AuthService.isAdmin(request)) {
-	  		out.println(
-	  			"<a class=\"mdl-list__item\"" +
-	  		  	"    href=\"" + request.getContextPath() + "/api/private/user/views/user-search\">" +
-	  			"  <span class=\"mdl-list__item-primary-content\">" +
-		        "    Usuarios" +
-		        "  </span>" +
-		  		"</a>"
-		  	);
-	  	}
-	  %>
-	</ul>
+    </a>
+
+  <%
+  	if (AuthService.isAdmin(request)) {
+  		out.println(
+  			"<a class=\"mdl-list__item\" href=\"" + request.getContextPath() + "/api/private/user/views/user-search\">" +
+  			"  	<span class=\"mdl-list__item-primary-content\">" +
+	        "   	Usuarios" +
+	        "  	</span>" +
+	  		"</a>"
+	  	);
+  	}
+  %>
 </div>
 <%@include file="./parts/footer.jsp" %>
+
 </body>
 </html>

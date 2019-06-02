@@ -31,7 +31,6 @@ public class LogoutRest extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 
-		System.out.println("logout");
 		AuthService.cleanSession(session);
 		request.getRequestDispatcher("/app/public/login.jsp").forward(request, response);
 	}

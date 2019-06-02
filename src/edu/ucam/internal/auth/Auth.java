@@ -35,8 +35,7 @@ public class Auth {
 		if (this.login.equals("admin") && this.password.equals("admin")) {
 			return true;
 		}
-		UserService service = new UserService(context);
-		User user = service.findByLogin(this.login);
+		User user = UserService.findByLogin(this.login);
 		return user != null && this.login.equals(this.password);
 	}
 	
